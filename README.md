@@ -1,69 +1,69 @@
-2024/25 Compilers Coursework
-==============================
+# C Compiler for RISC-V (32-bit)
 
-There are two components to the coursework:
+This project is a **custom C compiler** that translates pre-processed C90 code into **RISC-V (RV32IM)** assembly.  
+It was built from scratch as part of a broader effort to understand compiler design — from parsing to code generation — while working within a Docker-based Ubuntu environment.
 
-- Worth 90%:
-    - **A C compiler**. The source language is pre-processed C90, and the target language is RISC-V assembly. The target environment is Ubuntu 22.04, as described [here](docs/environment_guide.md). See [here](docs/c_compiler.md) for the full set of requirements and more information about the testing environment.
+---
 
-- Worth 10%:
-    - **Overall design style and code readability.** This has been introduced to reward thoughtful planning throughout the project, rather than penalise you. There are no strict guidelines, but you should consider the use of abstraction, your internal representation of instructions, proper Git use, signs of appropriate testing, as well as general code hygiene.
-    - **Evidence of time-tracking/project management.** This will be assessed orally at the start of Summer term. See [here](docs/management.md) for more information about this component.
+## 🌱 Overview
 
-Repositories
-============
+The compiler takes a `.c` source file, generates an **Abstract Syntax Tree (AST)**, and emits **RISC-V assembly code**.  
+It is designed to work on **Ubuntu 22.04** and tested within a **VS Code Dev Container** using the provided toolchain.
 
-Each group gets a bare private repository. It is up to you if you want to clone the main specification, or to start from scratch.
+Majority of **basic** and **intermediate** features have been implemented successfully.
 
-Submission
-==========
+---
 
-The deadline for submitting your C compiler is **Friday 21 March 2025 at 15:00**. There is no deadline for the project management component; instead, this will be assessed by a short oral viva that will be organised in Summer term.
+## ⚙️ Supported Features
 
-Submission will be via GitHub (code) and Teams (commit hash), as in the labs.
+### ✅ Basic Features
+- Single function files with no arguments  
+- Local variables  
+- `int` variable type  
+- Arithmetic and logical expressions  
+- `if-then-else` statements  
+- `while` loops  
 
-All submissions will be tested functionally -- there is no expectation for your compiler to *optimise* its input. Moreover, your compiler will only be tested on *valid* inputs, so you do not need to handle faulty inputs in a graceful way.
+### 🚀 Intermediate Features
+- Multiple functions with inter-function calls  
+- Functions with up to 8 parameters  
+- `for` loops  
+- Global and local arrays  
+- Array initialization and indexing (constants, variables, expressions)  
+- Recursive function calls  
+- `enum` keyword  
+- `switch` statements  
+- `break` and `continue` keywords  
+- Ternary operator (`x ? y : z`)
 
-Changelog
-=========
+### 💡 Planned / Advanced Features
+- Additional types: `float`, `double`, `char`, `unsigned`, `struct`, pointers  
+- Externally-defined functions (cross-file linking)  
+- More than 8 function parameters  
+- Mutually recursive function calls  
+- Locally scoped declarations inside control structures  
+- `typedef` keyword  
+- `sizeof(...)` operator  
+- Address-of (`&`) and dereference (`*`) operators  
+- Pointer arithmetic  
+- Character literals and strings (`\n`, `\t`, etc.)  
+- Struct declarations and usage
 
-* New for 2023/2024:
+---
 
-    * Provided guidance to generate coverage information.
-    * Expanded features list and provided a visual test case distribution.
-    * Included useful links to Godbolt, simulator, ISA, ABI, Assembler reference.
-    * Directly linked to ANSI C parser and lexer.
-    * Added a "Getting started" guide and incorporated last year's feedback from Ed.
-    * Changed the 10% of the grade (previously only for time management) to also account for code design to reward thoughtful planning.
-    * Improved the skeleton compiler to be more advanced by integrating lexer and parser to hopefully jump-start progress and avoid unnecessary debugging.
-    * Covered assembler directives in more details by showcasing the meaning behind an example assembly program, because that topic had always caused confusion in the past years.
-    * Added an improved testing script written in Python.
+## 🧰 Environment Setup
 
-* New for 2022/2023:
+The project is designed to be built and tested inside a **Docker container** with Ubuntu 22.04.  
+This ensures a consistent toolchain for RISC-V compilation and simulation.
 
-    * Target architecture is now RISC-V rather than MIPS, in order to align with the modernised Instruction Architectures half of the module.
-    * Instead of Vagrant, Docker is now used for the testing environment (with optional VS Code support).
-    * Test scripts are now provided to check your compiler against the set of public tests, without having to write this yourself.
-    * The basic compiler framework has been improved to support command line arguments.
-    * GitHub Actions can now perform automated testing of your compiler.
+### 🐳 Using VS Code + Docker
 
-* New for 2021/2022:
+1. **Install Docker Desktop**  
+   (On Apple M1/M2, choose the *Apple Silicon* version.)
 
-    * Various improvements to scripts for running test cases.
+2. **Install the Dev Containers extension** in VS Code.
 
-* New for 2020/2021:
+3. **Open the repository** in VS Code.
 
-    * In previous years, students were additionally required to submit a C-to-Python translator, as a "ramping up" task. This extra deliverable has been removed, as the labs provide plenty of "ramping up" practice.
-
-    * We have provided a really basic compiler that simply ignores its input and produces a fixed, valid RISC-V assembly program. This should help you to get started a bit more rapidly.
-
-* New for 2019/2020:
-
-    * In previous years, students were additionally required to submit a set of testcases. This deliverable has been removed; instead, a large collection of testcases has been provided for you, as this was judged to be more useful.
-
-    * In previous years, the compiler component counted for 42.8% of the module; it now counts for 55%. It was felt that this weighting more accurately reflects the effort that students put in to building a working compiler.
-
-Acknowledgements
-================
-
-The coursework was originally designed by [David Thomas](https://www.southampton.ac.uk/people/5z9bmb/professor-david-thomas), who lectured this module until 2017-18. It is nowadays maintained by [John Wickerson](https://johnwickerson.github.io/), to whom any feedback should be sent. I'd like to thank Quentin Corradi, Archie Crichton, Yann Herklotz, William Huynh, James Nock, Simon Staal, and Filip Wojcicki for making many contributions to this repository over several years, such as improving the compiler-testing scripts, providing a basic "getting started" compiler, writing instructions for setting up development environments on a variety of operating systems, configuring automation using GitHub actions, and setting up coverage testing.
+4. Open the Command Palette (`Ctrl+Shift+P` on Windows / `Cmd+Shift+P` on Mac)  
+   and run:
