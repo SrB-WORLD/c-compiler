@@ -18,8 +18,6 @@ For more information, run scripts/test.py --help
 """
 
 
-__version__ = "0.2.0"
-__author__ = "William Huynh (@saturn691), Filip Wojcicki, James Nock"
 
 
 import os
