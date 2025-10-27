@@ -1,7 +1,7 @@
 # C Compiler for RISC-V (32-bit)
 
 This project implements a custom **C compiler** that translates pre-processed C90 code into **RISC-V (RV32IM)** assembly.  
-It was developed to explore compiler architecture, code generation, and low-level programming concepts within a reproducible Docker-based Ubuntu environment.
+It was developed to explore compiler architecture, code generation, and low-level programming concepts.
 
 ---
 
