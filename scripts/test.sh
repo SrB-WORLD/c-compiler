@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Author : James Nock (@Jpnock)
-# Year   : 2023
-
 set -uo pipefail
 shopt -s globstar
 
