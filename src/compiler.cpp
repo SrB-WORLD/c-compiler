@@ -36,7 +36,7 @@ int main(int argc, char **argv)
         return 3;
     }
 
-    // Print AST in a human-readable way. It's not assessed, but exists for your convenience.
+    // Print AST in a human-readable way.
     PrettyPrint(ast_root, compile_output_path);
 
     // Compile to RISC-V assembly, the main goal of this project.
@@ -68,14 +68,14 @@ void PrettyPrint(const NodePtr& root, const std::string& compile_output_path)
 
 void Compile(const NodePtr& root, const std::string& compile_output_path)
 {
-    
+
 
     std::cout << "Main context address: " << &context << std::endl;
 
     std::cout << "Compiling parsed AST..." << std::endl;
 
     std::ofstream output(compile_output_path, std::ios::trunc);
-    
+
     root->EmitRISC(output, context);
 
     std::cout << "Compiled to: " << compile_output_path << std::endl;
